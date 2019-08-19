@@ -8,6 +8,6 @@ const customerSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-const customer = mongoose.model("Book", customerSchema);
+const Customer = mongoose.model("Book", customerSchema);
 
-module.exports = customer;
+module.exports = Customer;
