@@ -27,6 +27,7 @@ function App() {
         <NavBar />
         <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/LogIn" component={LogIn} />
 
 
         </Switch>
