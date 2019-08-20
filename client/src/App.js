@@ -26,8 +26,9 @@ function App() {
       <div>
         <NavBar />
         <Switch>
+        <Route exact path="/" component={Home} />
 
-          
+
         </Switch>
           <Footer />
         </div>
