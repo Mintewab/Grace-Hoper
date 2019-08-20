@@ -22,7 +22,9 @@ import Search from './Pages/Search';
 function App() {
   return (
     <div>
-
+      <Router>
+        
+      </Router>
     
   
     </div>
