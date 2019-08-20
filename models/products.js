@@ -8,6 +8,6 @@ const productSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-const products = mongoose.model("Book", productSchema);
+const Products = mongoose.model("Book", productSchema);
 
-module.exports = products;
+module.exports = Products;
