@@ -35,7 +35,7 @@ function App() {
         <Route exact path="/Books" component={Books} />
         <Route exact path="/ChildrenToys" component={ChildrenToys} />
         <Route exact path="/Clothes" component={Clothes} /><Route exact path="/Electronics" component={Electronics} />
-        <Route exact path="/Jewelry" component={Jewelry} />
+        <Route exact path="/Jewelry" component={Jewelry} /><Route exact path="/Movies" component={Movies} />
 
 
 
