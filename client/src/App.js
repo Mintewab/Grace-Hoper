@@ -22,27 +22,25 @@ import Search from './Pages/Search';
 function App() {
   return (
     <div>
-    <Router>
-      <div>
-        <NavBar />
-        <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/LogIn" component={LogIn} />
-        <Route exact path="/SignUp" component={SignUp} />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/Search" component={Search} />
-        <Route exact path="/Beauty" component={Beauty} />
-        <Route exact path="/Books" component={Books} />
-        <Route exact path="/ChildrenToys" component={ChildrenToys} />
-        <Route exact path="/Clothes" component={Clothes} /><Route exact path="/Electronics" component={Electronics} />
-        <Route exact path="/Jewelry" component={Jewelry} /><Route exact path="/Movies" component={Movies} />
-        <Route exact path="/Sport" component={Sport} />
-
-
-
-
-
-        </Switch>
+      <Router>
+        <div>
+          <NavBar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/LogIn" component={LogIn} />
+            <Route exact path="/SignUp" component={SignUp} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/Search" component={Search} />
+            <Route exact path="/Beauty" component={Beauty} />
+            <Route exact path="/Books" component={Books} />
+            <Route exact path="/ChildrenToys" component={ChildrenToys} />
+            <Route exact path="/Clothes" component={Clothes} />
+            <Route exact path="/Electronics" component={Electronics} />
+            <Route exact path="/Jewelry" component={Jewelry} />
+            <Route exact path="/Movies" component={Movies} />
+            <Route exact path="/Sport" component={Sport} />
+            <Route exact path="/GardenTools" component={GardenTools} />
+          </Switch>
           <Footer />
         </div>
       </Router>
@@ -50,4 +48,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
