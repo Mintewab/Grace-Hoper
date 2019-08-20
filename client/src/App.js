@@ -18,3 +18,13 @@ import Movies from "./Pages/Movies";
 import Sport from "./Pages/Sport";
 import GardenTools from './Pages/GardenTools';
 import Search from './Pages/Search';
+
+function App() {
+  return (
+    <div>
+
+    
+  
+    </div>
+  );
+}
