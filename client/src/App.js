@@ -22,11 +22,17 @@ import Search from './Pages/Search';
 function App() {
   return (
     <div>
-      <Router>
-        
+    <Router>
+      <div>
+        <NavBar />
+        <Switch>
+
+          
+        </Switch>
+          <Footer />
+        </div>
       </Router>
-    
-  
+      
     </div>
   );
 }
