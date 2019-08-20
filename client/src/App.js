@@ -30,7 +30,7 @@ function App() {
         <Route exact path="/LogIn" component={LogIn} />
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/cart" component={Cart} />
-
+        <Route exact path="/Search" component={Search} />
 
         </Switch>
           <Footer />
