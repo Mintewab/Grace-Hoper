@@ -1,16 +1,16 @@
-const router = require("express").Router();
-const customerController = require("../../controllers/customerController");
+// const router = require("express").Router();
+// const customerController = require("../../controllers/customerController");
 
 
-router.route("/")
-//   .get(productController.findAll)
-  .post(customerController.create);
+// router.route("/")
+// //   .get(productController.findAll)
+//   .post(customerController.create);
 
 
-router
-  .route("/:id")
-  .get(customerController.findById)
-  .put(customerController.update)
-  .delete(customerController.remove);
+// router
+//   .route("/:id")
+//   .get(customerController.findById)
+//   .put(customerController.update)
+//   .delete(customerController.remove);
 
-module.exports = router;
+// module.exports = router;

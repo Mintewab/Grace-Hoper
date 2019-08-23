@@ -9,6 +9,6 @@ const productsSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-const Products = mongoose.model("Book", productsSchema);
+const Products = mongoose.model("Products", productsSchema);
 
 module.exports = Products;
