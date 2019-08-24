@@ -1,14 +1,16 @@
+    
+// import React from "react";
 
-import React from "react";
-// import CardBtn from "../CardBtn";
-import "./Card.css";
+// // import CardBtn from "../CardBtn";
+// import "./Card.css";
 
-function Card(props) {
-  return (
-    <div className="card">
-     {props.children}
-    </div>
-  );
-}
 
-export default Card;
+// function Card(props) {
+//   return (
+//     <div className="card">
+//      {props.children}
+//     </div>
+//   );
+// }
+
+// export default Card;
