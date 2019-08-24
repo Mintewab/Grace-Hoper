@@ -1,33 +1,31 @@
 {
-  "name": "mern",
+  "name": "grace-hoper",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is an \"exchange” shopping application where users will not have to pay for items. Instead, shoppers will donate items to get points. The points that are being made from the donations will be for the user to spend on the application from donations done by others.",
   "main": "server.js",
-  "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
-  },
   "dependencies": {
     "axios": "^0.18.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "cors": "^2.8.5",
-    "express": "^4.16.3",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.3.16",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.10",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-uwp": "^1.2.31"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mintewab/Grace-Hoper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mintewab/Grace-Hoper/issues"
+  },
+  "homepage": "https://github.com/Mintewab/Grace-Hoper#readme"
 }
