@@ -1,6 +1,12 @@
 .container {
     display: inline-block;
     cursor: pointer;
+    background-color:rgba(228, 188, 195, 0.171);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    
   }
   
   .bar1, .bar2, .bar3 {
@@ -9,6 +15,9 @@
     background-color:white;
     margin: 6px 0;
     transition: 0.4s;
+  }
+  .dropdown{
+    background-color:rgba(211, 175, 190, 0.952);
   }
   .MenuBarHam {
       width: 40px;

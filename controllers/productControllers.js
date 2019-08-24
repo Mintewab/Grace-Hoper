@@ -3,6 +3,7 @@ const db = require("../models");
 
 module.exports = {
     findAll: function(req, res) {
+      console.log("database");
       db.Products.find(req.query)
         .then(dbProduct => res.json(dbProduct))
         .catch(err => res.status(422).json(err));
