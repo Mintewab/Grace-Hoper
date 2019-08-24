@@ -35,7 +35,7 @@ class Products extends Component {
                       <h4>
                       Condition: {product.condition}
                       </h4>
-                      <img className="card-img-top  img-fluid"  src={product.image}></img>
+                      <img className="card-img-top  img-fluid"  alt=""src={product.image}></img>
                   </strong>
               </Card>
             ))};
