@@ -9,7 +9,7 @@ class Footer extends React.Component {
     }
     render(){
         return(
-            <footer>By {this.state.name} @2019</footer>
+            <footer className="footer" >By {this.state.name} @2019</footer>
         );
     }
 }

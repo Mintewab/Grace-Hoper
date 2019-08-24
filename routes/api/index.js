@@ -5,7 +5,7 @@ const productRoutes = require("./products");
 const customerRoutes = require("./customer");
 
 // Book routes
-router.use("/books", productRoutes);
+router.use("/products", productRoutes);
 
 // Google Routes
 router.use("/profile", customerRoutes);
