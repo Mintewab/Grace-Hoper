@@ -101,5 +101,3 @@ db.Products
     console.error(err);
     process.exit(1);
   });
-
-

@@ -16,7 +16,7 @@ const MenuBar = () => {
         <Link to="/Clothes"> <button className="dropdown-item" type="button">Clothes</button> </Link>
         <Link to="/Electronics"><button className="dropdown-item" type="button">Electronics</button> </Link>
         <Link to="/ChildrenToys"><button className="dropdown-item" type="button">Children Toys</button> </Link>
-        <Link to="/products"> <button className="dropdown-item" type="button">Beauty and Health</button> </Link>
+        <Link to="/Products"> <button className="dropdown-item" type="button">Products</button> </Link>
         <Link to="/Books"><button className="dropdown-item" type="button">Books and Audible</button> </Link>
         <Link to="/GardenTools"><button className="dropdown-item" type="button">Home, Garden and Tools</button> </Link>
         <Link to="/Movies"><button className="dropdown-item" type="button">Movies,Music and Games</button> </Link>

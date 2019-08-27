@@ -28,4 +28,4 @@ module.exports = {
         .then(dbCustomer => res.json(dbCustomer))
         .catch(err => res.status(422).json(err));
     }
-  };
+  }
