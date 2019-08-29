@@ -1,5 +1,4 @@
 language: node_js
 node_js:
   - 7
-script: npm run build
-
+script: CI=false npm run build
