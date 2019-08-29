@@ -25,7 +25,7 @@ class Products extends Component {
         return (
          <div>
             {this.state.products.map(product => (
-                 <Card  key={product._id} style={{ width: '20rem' }}>
+                 <Card  key={product._id} style={{ width: '40rem' }}>
                  <Card.Img style={{ width: '10rem', height: "10rem"}}variant="top"src={product.image} />
                  <Card.Body>
                    <Card.Title style={{ color: 'Black' }}>{product.productName}</Card.Title>
@@ -35,6 +35,10 @@ class Products extends Component {
                    <Card.Text style={{ color: 'Black' }}>
                    {product.condition}                   
                    </Card.Text >
+                   <Card.Text style={{ color: 'Black' }}>
+                    Some quick example text to build on the Books and make up the bulk of
+                        the card's content.
+                    </Card.Text >
                    <Button variant="primary">Add to Carts</Button>
                  </Card.Body>
                </Card>
