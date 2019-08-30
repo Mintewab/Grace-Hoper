@@ -31,21 +31,7 @@ const productSeed = [
     image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6287/6287916_sd.jpg;maxHeight=200;maxWidth=200",
     date: new Date(Date.now())
   },
-  {
-    catagory: "Electronics",
-    productName: "Iphone 8 plus",
-    condition: "Excellent",
-    image:"https://www.sprint.com/content/dam/sprint/commerce/devices/apple/iphone_8_plus/space_gray/new/devicenb_200x200.png",
-    date: new Date(Date.now())
-  },
-  {
-    catagory: "Furniture",
-    productName: "Mattress",
-    condition:"Good",
-    image: "https://cdn.sleepnumber.com/image/upload/f_auto,q_auto:good/v7531834698957074029242179387/medias/%7CDESKTOP%7Cc4-hero-image-sm.jpg.jpg",
-    date: new Date(Date.now())
-  },
-  {
+    {
     catagory: "Housewares",
     productName: "Microwave",
     condition: "Excellent",
