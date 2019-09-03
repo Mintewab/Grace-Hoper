@@ -2,30 +2,30 @@ const db = require("../models");
 
 module.exports = {
     findAll: function(req, res) {     
-      db.Products.find(req.query)
-        .then(dbProduct => res.json(dbProduct))
+      db.Books.find(req.query)
+        .then(dbBook => res.json(dbBook))
         .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {
-      db.Products.findById(req.params.id)
-        .then(dbProduct => res.json(dbProduct))
+      db.Books.findById(req.params.id)
+        .then(dbBook => res.json(dbBook))
         .catch(err => res.status(422).json(err));
     },
     create:  function(req, res) {
       console.log(req.file);
-      db.Products.create(req.body)
-        .then(dbProduct => res.json(dbProduct))
+      db.Books.create(req.body)
+        .then(dbBook => res.json(dbBook))
         .catch(err => res.status(422).json(err));
     },
     update: function(req, res) {
-      db.Products.findOneAndUpdate({ id: req.params.id }, req.body)
-        .then(dbProduct => res.json(dbProduct))
+      db.Books.findOneAndUpdate({ id: req.params.id }, req.body)
+        .then(dbBook => res.json(dbBook))
         .catch(err => res.status(422).json(err));
     },
     remove: function(req, res) {
-      db.Products.findById(req.params.id)
-        .then(dbProduct => dbProduct.remove())
-        .then(dbProduct => res.json(dbProduct))
+      db.Books.findById(req.params.id)
+        .then(dbBook => dbBook.remove())
+        .then(dbBook => res.json(dbBook))
         .catch(err => res.status(422).json(err));
     }
   };
