@@ -26,8 +26,10 @@
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
+    "multer": "^1.4.2",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-uwp": "^1.2.31",
-    "seed": "^0.4.4"
+    "seed": "^0.4.4",
+    "update": "^0.7.4"
   }
 }

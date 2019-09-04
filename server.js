@@ -4,6 +4,9 @@ const cors = require('cors')
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const Schema = mongoose.Schema;
+const multer = require('multer');
+const upload = multer ({dest: 'uploads/'})
 const PORT = process.env.PORT || 3001;
 
 
@@ -22,6 +25,8 @@ if (process.env.NODE_ENV === "production") {
 console.log("check")
 // Add routes, both API and view
 app.use(routes);
+
+
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/grace-hoper", 
