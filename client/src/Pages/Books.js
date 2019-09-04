@@ -11,6 +11,12 @@ import Button from 'react-bootstrap/Button';
 import "../../src/Components/Card/Card.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import RatingControl from "react-uwp/RatingControl";
+
+const baseStyle: React.CSSProperties = {
+  margin: "10px 0",
+  display: "block"
+};
 
 class Books extends React.Component {
 static contextTypes = { theme: PropTypes.object };
@@ -70,17 +76,6 @@ static contextTypes = { theme: PropTypes.object };
       
          <Container>
 <Row>
-         <Card style={{ width: '20rem' }}>
-<Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQom4NV8JUFP-Jwsvqh5zQiJVVYVkhsrb77-FBjSblFm5B7nRR0" />
-<Card.Body>
- <Card.Title style={{ color: 'Black' }}>Books</Card.Title>
- <Card.Text style={{ color: 'Black' }}>
-   Some quick example text to build on the Books and make up the bulk of
-   the card's content.
- </Card.Text >
- <Button variant="primary">Add to Carts</Button>
-</Card.Body>
-</Card>
 <Card style={{ width: '20rem' }}>
 <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQom4NV8JUFP-Jwsvqh5zQiJVVYVkhsrb77-FBjSblFm5B7nRR0" />
 <Card.Body>
@@ -89,9 +84,20 @@ static contextTypes = { theme: PropTypes.object };
    Some quick example text to build on the Books and make up the bulk of
    the card's content.
  </Card.Text >
+
+ <RatingControl
+  style={baseStyle}
+  iconStyle={{ fontSize: 28 }}
+  iconRatedStyle={{ color: "Pink" }}
+  // icon="HeartFillLegacy"
+  defaultRating={5}
+  maxRating={5}
+/>
+ 
  <Button variant="primary">Add to Carts</Button>
 </Card.Body>
 </Card>
+
 <Card style={{ width: '20rem' }}>
 <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQom4NV8JUFP-Jwsvqh5zQiJVVYVkhsrb77-FBjSblFm5B7nRR0" />
 <Card.Body>
@@ -100,9 +106,20 @@ static contextTypes = { theme: PropTypes.object };
    Some quick example text to build on the Books and make up the bulk of
    the card's content.
  </Card.Text >
+
+ <RatingControl
+  style={baseStyle}
+  iconStyle={{ fontSize: 28 }}
+  iconRatedStyle={{ color: "Pink" }}
+  // icon="HeartFillLegacy"
+  defaultRating={5}
+  maxRating={5}
+/>
+ 
  <Button variant="primary">Add to Carts</Button>
 </Card.Body>
 </Card>
+
 <Card style={{ width: '20rem' }}>
 <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQom4NV8JUFP-Jwsvqh5zQiJVVYVkhsrb77-FBjSblFm5B7nRR0" />
 <Card.Body>
@@ -111,9 +128,21 @@ static contextTypes = { theme: PropTypes.object };
    Some quick example text to build on the Books and make up the bulk of
    the card's content.
  </Card.Text >
+
+ <RatingControl
+  style={baseStyle}
+  iconStyle={{ fontSize: 28 }}
+  iconRatedStyle={{ color: "Pink" }}
+  // icon="HeartFillLegacy"
+  defaultRating={5}
+  maxRating={5}
+/>
+ 
  <Button variant="primary">Add to Carts</Button>
 </Card.Body>
-</Card><Card style={{ width: '20rem' }}>
+</Card>
+
+<Card style={{ width: '20rem' }}>
 <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQom4NV8JUFP-Jwsvqh5zQiJVVYVkhsrb77-FBjSblFm5B7nRR0" />
 <Card.Body>
  <Card.Title style={{ color: 'Black' }}>Books</Card.Title>
@@ -121,9 +150,21 @@ static contextTypes = { theme: PropTypes.object };
    Some quick example text to build on the Books and make up the bulk of
    the card's content.
  </Card.Text >
+
+ <RatingControl
+  style={baseStyle}
+  iconStyle={{ fontSize: 28 }}
+  iconRatedStyle={{ color: "Pink" }}
+  // icon="HeartFillLegacy"
+  defaultRating={5}
+  maxRating={5}
+/>
+ 
  <Button variant="primary">Add to Carts</Button>
 </Card.Body>
-</Card><Card style={{ width: '20rem' }}>
+</Card>
+
+<Card style={{ width: '20rem' }}>
 <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQom4NV8JUFP-Jwsvqh5zQiJVVYVkhsrb77-FBjSblFm5B7nRR0" />
 <Card.Body>
  <Card.Title style={{ color: 'Black' }}>Books</Card.Title>
@@ -131,6 +172,39 @@ static contextTypes = { theme: PropTypes.object };
    Some quick example text to build on the Books and make up the bulk of
    the card's content.
  </Card.Text >
+
+ <RatingControl
+  style={baseStyle}
+  iconStyle={{ fontSize: 28 }}
+  iconRatedStyle={{ color: "Pink" }}
+  // icon="HeartFillLegacy"
+  defaultRating={5}
+  maxRating={5}
+/>
+ 
+ <Button variant="primary">Add to Carts</Button>
+</Card.Body>
+</Card>
+     
+     
+     <Card style={{ width: '20rem' }}>
+<Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQom4NV8JUFP-Jwsvqh5zQiJVVYVkhsrb77-FBjSblFm5B7nRR0" />
+<Card.Body>
+ <Card.Title style={{ color: 'Black' }}>Books</Card.Title>
+ <Card.Text style={{ color: 'Black' }}>
+   Some quick example text to build on the Books and make up the bulk of
+   the card's content.
+ </Card.Text >
+
+ <RatingControl
+  style={baseStyle}
+  iconStyle={{ fontSize: 28 }}
+  iconRatedStyle={{ color: "Pink" }}
+  // icon="HeartFillLegacy"
+  defaultRating={5}
+  maxRating={5}
+/>
+ 
  <Button variant="primary">Add to Carts</Button>
 </Card.Body>
 </Card>
