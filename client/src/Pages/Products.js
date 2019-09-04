@@ -72,19 +72,29 @@ class Products extends Component {
              <Container>
                  <Row>
             {this.state.products.map(product => (
-                 <Card  key={product._id} style={{ width: '20rem' }}>
-                 <Card.Img style={{ width: '10rem', height: "10rem"}}variant="top"src={product.image} />
+                 <Card  key={product._id} style={{ width: '21rem' }}>
+                 <Card.Img style={{ width: '10rem', height: "rem"}}variant="top"src={product.image} />
                  <Card.Body>
                    <Card.Title style={{ color: 'Black' }}>{product.productName}</Card.Title>
                    <Card.Text style={{ color: 'Black' }}>
-                   {product.catagory  }
-                   
-                 
+                   {product.catagory}
                    </Card.Text >
                    <Card.Text style={{ color: 'Black' }}>
                    {product.condition}                   
                    </Card.Text >
-                   <Button variant="primary">Add to Carts</Button>
+                   <Card.Text style={{ color: 'Black' }}>
+                    Some quick example text to build on the Books and make up the bulk of
+                        the card's content.
+                    </Card.Text >
+                    <RatingControl
+  style={baseStyle}
+  iconStyle={{ fontSize: 15 }}
+  iconRatedStyle={{ color: "Pink"}}
+  // icon="HeartFillLegacy"
+  defaultRating={5}
+  maxRating={5}
+/>
+            <Button variant="primary">Add to Carts</Button>
                  </Card.Body>
                </Card>
             ))}
@@ -94,5 +104,4 @@ class Products extends Component {
         ) 
     }
 }
-
 export default Products;
