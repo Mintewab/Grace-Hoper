@@ -18,7 +18,7 @@ import Jewelry from "./Pages/Jewelry";
 import Movies from "./Pages/Movies";
 import Sport from "./Pages/Sport";
 import GardenTools from './Pages/GardenTools';
-import AddItem from './Pages/AddItem';
+import Search from './Pages/Search';
 import { Theme as UWPThemeProvider, getTheme } from "react-uwp/Theme";
 
 class App extends React.Component {
@@ -35,14 +35,13 @@ class App extends React.Component {
     <div>
       <Router>
         <div>
-          <NavBar /> 
-                  
+          <NavBar />         
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/LogIn" component={LogIn} />
             <Route exact path="/SignUp" component={SignUp} />
             <Route exact path="/cart" component={Cart} />
-            <Route exact path="/AddItem" component={AddItem} />
+            <Route exact path="/Search" component={Search} />
             <Route exact path="/Products" component={Products} />
             <Route exact path="/Books" component={Books} />
             <Route exact path="/ChildrenToys" component={ChildrenToys} />

@@ -1,164 +1,84 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-import "../../src/Styles/SignUp.css";
-import API from "../Utils/API"
-import axios from 'axios'
+import React, { useState } from "react";
+import Layout from "../pages/Layout";
+import { API } from "../config";
 
-class SignUp extends Component {
-  constructor() {
-		super()
-		this.state = {
-			email: '',
-			password: '',
-			// confirmPassword: '',
+const Signup = () => {
+    const [values, setValues] = useState({
+        name: "",
+        email: "",
+        password: "",
+        error: "",
+        success: false
+    });
 
-		}
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleChange = this.handleChange.bind(this)
-	}
-	handleChange(event) {
-		this.setState({
-			[event.target.name]: event.target.value
-		})
-	}
-	handleSubmit(event) {
-		console.log('sign-up handleSubmit, email: ')
-		console.log(this.state.email)
-		event.preventDefault()
+    const { name, email, password } = values;
 
-		//request to server to add a new username/password
-		API.signup({
-			email: this.state.email,
-			password: this.state.password
-		})
-			.then(response => {
-				console.log(response)
-				if (!response.data.errmsg) {
-					console.log('successful signup')
-					this.setState({ //redirect to login page
-						redirectTo: '/Home'
-					})
-				} else {
-					console.log('username already taken')
-				}
-			}).catch(error => {
-				console.log('signup error: ')
-				console.log(error)
+    const handleChange = name => event => {
+        setValues({ ...values, error: false, [name]: event.target.value });
+    };
 
-			})
-  }
-  //=============================================================
-    render() {
-        return(
-//             <Form>
-//   <Form.Row>
-//     <Form.Group as={Col} controlId="formGridEmail">
-//       <Form.Label
-//       value={this.state.email}
-//       onChange={this.handleChange}
-//       >Email</Form.Label>
-//       <Form.Control type="email" placeholder="Enter email" />
-//     </Form.Group>
+    const signup = user => {
+        fetch(`${API}/signup`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then(response => {
+                return response.json();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
-//     <Form.Group as={Col} controlId="formGridPassword">
-//       <Form.Label
-//       value={this.state.password}
-//       onChange={this.handleChange}
-//       >Password</Form.Label>
-//       <Form.Control type="password" placeholder="Password" />
-//     </Form.Group>
-//   </Form.Row>
+    const clickSubmit = event => {
+        event.preventDefault();
+        signup({ name, email, password });
+    };
 
-//   <Form.Group controlId="formGridAddress1">
-//     <Form.Label>Address</Form.Label>
-//     <Form.Control placeholder="1234 Main St" />
-//   </Form.Group>
+    const signUpForm = () => (
+        <form>
+            <div className="form-group">
+                <label className="text-muted">Name</label>
+                <input
+                    onChange={handleChange("name")}
+                    type="text"
+                    className="form-control"
+                />
+            </div>
 
-//   <Form.Group controlId="formGridAddress2">
-//     <Form.Label>Address 2</Form.Label>
-//     <Form.Control placeholder="Apartment, studio, or floor" />
-//   </Form.Group>
+            <div className="form-group ">
+                <label className="text-muted">Email</label>
+                <input
+                    onChange={handleChange("email")}
+                    type="email"
+                    className="form-control"
+                />
+            </div>
 
-//   <Form.Row>
-//     <Form.Group as={Col} controlId="formGridCity">
-//       <Form.Label>City</Form.Label>
-//       <Form.Control />
-//     </Form.Group>
+            <div className="form-group">
+                <label className="text-muted">Password</label>
+                <input
+                    onChange={handleChange("password")}
+                    type="password"
+                    className="form-control"
+                />
+            </div>
+            <button onClick={clickSubmit} className="btn btn-primary">
+                Submit
+            </button>
+        </form>
+    );
 
-//     <Form.Group as={Col} controlId="formGridState">
-//       <Form.Label>State</Form.Label>
-//       <Form.Control as="select">
-//         <option>Choose...</option>
-//         <option>...</option>
-//       </Form.Control>
-//     </Form.Group>
+    return (
+        <div className = "container col-md-8 offset-md-2">
+            {signUpForm()}
+            {JSON.stringify(values)}
+       </div>
+    );
+};
 
-//     <Form.Group as={Col} controlId="formGridZip">
-//       <Form.Label>Zip</Form.Label>
-//       <Form.Control />
-//     </Form.Group>
-//   </Form.Row>
-
-//   <Form.Group id="formGridCheckbox">
-//     <Form.Check type="checkbox" label="Seller" />
-//   </Form.Group>
-//   <Form.Group id="formGridCheckbox">
-//     <Form.Check type="checkbox" label="Buyer" />
-//   </Form.Group>
-
-//   <Button variant="primary" type="submit"
-//   onClick={this.handleSubmit}>
-//     Submit
-//   </Button>
-// </Form>
-<div className="SignupForm">
-			<h4>Sign up</h4>
-			<form className="form-horizontal">
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="email">email</label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							type="text"
-							id="email"
-							name="email"
-							placeholder="email"
-							value={this.state.email}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="password">Password: </label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							placeholder="password"
-							type="password"
-							name="password"
-							value={this.state.password}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group ">
-					<div className="col-7"></div>
-					<button
-						className="btn btn-primary col-1 col-mr-auto"
-						onClick={this.handleSubmit}
-						type="submit"
-					>Sign up</button>
-				</div>
-			</form>
-		</div>
-        );
-    }
-}
-
-export default SignUp;
+export default Signup;

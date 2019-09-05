@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import Gallery from "../Containers/GalleryComponent";
+// import NavBar from "../Containers/NavBarComponent";
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import "../../src/Components/Card/Card.css";
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import FloatNav from "react-uwp/FloatNav";
 import IconButton from "react-uwp/IconButton";
+import "../../src/Styles/Card.css";
+import "../Components/Card/Card"
 
 class Home extends Component {
     render() {
         return(
             <div>
                
-            <FloatNav
+            {/* <FloatNav
               style={{ margin: "20px 0" }}
               isFloatRight={false}
               focusItemIndex={1}
@@ -28,7 +31,7 @@ class Home extends Component {
                     RatingStarFillReducedPaddingHTMLLegacy
                   </IconButton>
                 ),
-                title: "Favorites"
+                title: "Add to Favorites"
               }, {
                 iconNode: (
                   <IconButton hoverStyle={{}} activeStyle={{}}>
@@ -47,10 +50,11 @@ class Home extends Component {
               }]}
               bottomNode={[
            
-              ]}
+              ]} */}
             />    
+          
             <Gallery />
-                      <Container>
+ <Container>
   <Row>
             <Card style={{ width: '20rem' }}>
   <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3PjyZHZO8sQii4he_GZFmUHvvXmOK_pLM6uGUKH2-tH1YdhIy" />
