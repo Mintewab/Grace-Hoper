@@ -12,6 +12,12 @@ import "../../src/Components/Card/Card.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
+import RatingControl from "react-uwp/RatingControl";
+
+const baseStyle: React.CSSProperties = {
+  margin: "10px 0",
+  display: "block"
+};
 class ChildrenToys extends React.Component {
     static contextTypes = { theme: PropTypes.object };
     context: { theme: ReactUWP.ThemeType };
@@ -125,9 +131,20 @@ class ChildrenToys extends React.Component {
    Some quick example text to build on the Children Toys and make up the bulk of
    the card's content.
  </Card.Text >
- <Button variant="primary">Add to Carts</Button>
-</Card.Body>
+ 
+ <RatingControl
+  style={baseStyle}
+  iconStyle={{ fontSize: 28 }}
+  iconRatedStyle={{ color: "Pink" }}
+  // icon="HeartFillLegacy"
+  defaultRating={5}
+  maxRating={5}
+/>
+<Button variant="primary">Add to Carts</Button>
+ </Card.Body>
 </Card>
+
+
 </Row>
 </Container>
 </div>
