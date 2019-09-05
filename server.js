@@ -1,36 +1,43 @@
 const express = require("express");
-const bodyParser = require('body-parser')
-const cors = require('cors')
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const expressValidator = require("express-validator");
+require("dotenv").config();
+// import routes
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
+const categoryRoutes = require("./routes/category");
+const productRoutes = require("./routes/product");
+
+// app
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// db
+mongoose
+    .connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useCreateIndex: true
+    })
+    .then(() => console.log("DB Connected"));
 
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// middlewares
+app.use(morgan("dev"));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(expressValidator());
+app.use(cors());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-console.log("check")
-// Add routes, both API and view
-app.use(routes);
+// routes middleware
+app.use("/api", authRoutes);
+app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
+app.use("/api", productRoutes);
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/grace-hoper", 
-{
-  useCreateIndex: true,
-  useNewUrlParser: true
-}
-);
+const port = process.env.PORT || 3001;
 
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
