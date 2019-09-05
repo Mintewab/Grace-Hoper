@@ -28,7 +28,7 @@ class Home extends Component {
                     RatingStarFillReducedPaddingHTMLLegacy
                   </IconButton>
                 ),
-                title: "Add to Favorites"
+                title: "Favorites"
               }, {
                 iconNode: (
                   <IconButton hoverStyle={{}} activeStyle={{}}>
