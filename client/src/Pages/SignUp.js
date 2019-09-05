@@ -1,70 +1,84 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-import "../../src/Styles/SignUp.css";
+import React, { useState } from "react";
+import Layout from "../pages/Layout";
+import { API } from "../config";
 
-class SignUp extends Component {
-    render() {
-        return(
-            <Form>
-  <Form.Row>
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label>Email</Form.Label>
-      <Form.Control type="email" placeholder="Enter email" />
-    </Form.Group>
+const Signup = () => {
+    const [values, setValues] = useState({
+        name: "",
+        email: "",
+        password: "",
+        error: "",
+        success: false
+    });
 
-    <Form.Group as={Col} controlId="formGridPassword">
-      <Form.Label>Password</Form.Label>
-      <Form.Control type="password" placeholder="Password" />
-    </Form.Group>
-  </Form.Row>
+    const { name, email, password } = values;
 
-  <Form.Group controlId="formGridAddress1">
-    <Form.Label>Address</Form.Label>
-    <Form.Control placeholder="1234 Main St" />
-  </Form.Group>
+    const handleChange = name => event => {
+        setValues({ ...values, error: false, [name]: event.target.value });
+    };
 
-  <Form.Group controlId="formGridAddress2">
-    <Form.Label>Address 2</Form.Label>
-    <Form.Control placeholder="Apartment, studio, or floor" />
-  </Form.Group>
+    const signup = user => {
+        fetch(`${API}/signup`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then(response => {
+                return response.json();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
-  <Form.Row>
-    <Form.Group as={Col} controlId="formGridCity">
-      <Form.Label>City</Form.Label>
-      <Form.Control />
-    </Form.Group>
+    const clickSubmit = event => {
+        event.preventDefault();
+        signup({ name, email, password });
+    };
 
-    <Form.Group as={Col} controlId="formGridState">
-      <Form.Label>State</Form.Label>
-      <Form.Control as="select">
-        <option>Choose...</option>
-        <option>...</option>
-      </Form.Control>
-    </Form.Group>
+    const signUpForm = () => (
+        <form>
+            <div className="form-group">
+                <label className="text-muted">Name</label>
+                <input
+                    onChange={handleChange("name")}
+                    type="text"
+                    className="form-control"
+                />
+            </div>
 
-    <Form.Group as={Col} controlId="formGridZip">
-      <Form.Label>Zip</Form.Label>
-      <Form.Control />
-    </Form.Group>
-  </Form.Row>
+            <div className="form-group ">
+                <label className="text-muted">Email</label>
+                <input
+                    onChange={handleChange("email")}
+                    type="email"
+                    className="form-control"
+                />
+            </div>
 
-  <Form.Group id="formGridCheckbox">
-    <Form.Check type="checkbox" label="Seller" />
-  </Form.Group>
-  <Form.Group id="formGridCheckbox">
-    <Form.Check type="checkbox" label="Buyer" />
-  </Form.Group>
+            <div className="form-group">
+                <label className="text-muted">Password</label>
+                <input
+                    onChange={handleChange("password")}
+                    type="password"
+                    className="form-control"
+                />
+            </div>
+            <button onClick={clickSubmit} className="btn btn-primary">
+                Submit
+            </button>
+        </form>
+    );
 
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
-        );
-    }
-}
+    return (
+        <div className = "container col-md-8 offset-md-2">
+            {signUpForm()}
+            {JSON.stringify(values)}
+       </div>
+    );
+};
 
-export default SignUp;
+export default Signup;
