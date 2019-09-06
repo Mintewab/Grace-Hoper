@@ -1,5 +1,5 @@
 const express = require("express");
-const path = require('path');
+const path = require("path");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -37,11 +37,12 @@ app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 
+//serve static assets if in production(for heroku)
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static( 'client/build' ));
 
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); // relative path
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')); // relative path
     });
 }
 

@@ -8,8 +8,8 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
-import FloatNav from "react-uwp/FloatNav";
-import IconButton from "react-uwp/IconButton";
+// import FloatNav from "react-uwp/FloatNav";
+// import IconButton from "react-uwp/IconButton";
 import "../../src/Styles/Card.css";
 import "../Components/Card/Card"
 
