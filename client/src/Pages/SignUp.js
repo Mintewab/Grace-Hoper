@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Layout from "../pages/Layout";
-import { API } from "../config";
+import { Link } from "react-router-dom";
+// import { API } from "../config";
 
 const Signup = () => {
     const [values, setValues] = useState({
