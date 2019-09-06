@@ -18,7 +18,7 @@ const app = express();
 
 // db
 mongoose
-    .connect(process.env.MONGODB_URI, {
+    .connect(process.env.MONGODB_URI || 'mongodb://localhost/grace-hoper', {
         useNewUrlParser: true,
         useCreateIndex: true
     })
