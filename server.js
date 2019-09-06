@@ -12,13 +12,13 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
-
+const dotenv=require("dotenv").config()
 // app
 const app = express();
 
 // db
 mongoose
-    .connect(process.env.MONGODB_URI , {
+    .connect(process.env.MONGODB_URI || "mongodb://localhost/grace-hoper" , {
         useNewUrlParser: true,
         useCreateIndex: true
     })
