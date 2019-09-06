@@ -1,95 +1,39 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-// import Layout from "../core/Layout";
-import { login } from "../auth";
 
-const Login = () => {
-    const [values, setValues] = useState({
-        email: "",
-        password: "",
-        error: "",
-        loading: false,
-        redirectToReferrer: false
-    });
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import * as PropTypes from "prop-types";
+import PasswordBox from "react-uwp/PasswordBox";
+import TextBox from "react-uwp/TextBox";
+import Icon from "react-uwp/Icon";
+import "../../src/Styles/LogIn.css";
 
-    const { email, password, loading, error, redirectToReferrer } = values;
+const baseStyle: React.CSSProperties = {
+    margin: "10px 10px 10px 0",
+    
+  };
+class LogIn extends React.Component {
+    static contextTypes = { theme: PropTypes.object };
+  context: { theme: ReactUWP.ThemeType };
+    render() {
+        return(
+            <div className= "logIn">
+        <TextBox
+           style={{ width: 340, ...baseStyle, }}
+          background="none"
+          placeholder="Insert your User name"
+          leftNode={<Icon style={{ margin: "0 8px"}}>HeartFillLegacy</Icon>}
+        />
+        <PasswordBox
+          style={{ width: 340, ...baseStyle }}
+          placeholder="Input Your Password"
+          passwordBoxHeight={28}
+        />
 
-    const handleChange = name => event => {
-        setValues({ ...values, error: false, [name]: event.target.value });
-    };
-
-    const clickSubmit = event => {
-        event.preventDefault();
-        setValues({ ...values, error: false, loading: true });
-        login({ email, password }).then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error, loading: false });
-            } else {
-                setValues({
-                    ...values,
-                    redirectToReferrer: true
-                });
-            }
-        });
-    };
-
-    const loginForm = () => (
-        <form>
-            <div className="form-group">
-                <label className="text-muted">Email</label>
-                <input
-                    onChange={handleChange("email")}
-                    type="email"
-                    className="form-control"
-                    value={email}
-                />
-            </div>
-
-            <div className="form-group">
-                <label className="text-muted">Password</label>
-                <input
-                    onChange={handleChange("password")}
-                    type="password"
-                    className="form-control"
-                    value={password}
-                />
-            </div>
-            <button onClick={clickSubmit} className="btn btn-primary">
-                Submit
-            </button>
-        </form>
-    );
-
-    const showError = () => (
-        <div
-            className="alert alert-danger"
-            style={{ display: error ? "" : "none" }}
-        >
-            {error}
-        </div>
-    );
-
-    const showLoading = () =>
-        loading && (
-            <div className="alert alert-info">
-                <h2>Loading...</h2>
-            </div>
+      </div>
         );
+    }
+}
 
-    const redirectUser = () => {
-        if (redirectToReferrer) {
-            return <Redirect to="/" />;
-        }
-    };
+export default LogIn;;
 
-    return (
-        <div className="container col-md-8 offset-md-2">
-            {showLoading()}
-            {showError()}
-            {loginForm()}
-            {redirectUser()}
-        </div>
-    );
-};
-
-export default Login;
+   
