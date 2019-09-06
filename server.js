@@ -18,7 +18,7 @@ const app = express();
 
 // db
 mongoose
-    .connect(process.env.MONGODB_URI || 'mongodb://user:123456A@ds125556.mlab.com:25556/heroku_j0c95s9q', {
+    .connect(process.env.MONGODB_URI , {
         useNewUrlParser: true,
         useCreateIndex: true
     })
