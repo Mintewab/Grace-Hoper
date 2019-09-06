@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 // import Layout from "../core/Layout";
-import { login } from "../auth";
+import { login, authenticate, isAuthenticated } from "../auth";
 
 const Login = () => {
     const [values, setValues] = useState({
@@ -13,7 +13,7 @@ const Login = () => {
     });
 
     const { email, password, loading, error, redirectToReferrer } = values;
-
+    const { user } = isAuthenticated();
     const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value });
     };
@@ -25,9 +25,11 @@ const Login = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error, loading: false });
             } else {
-                setValues({
-                    ...values,
-                    redirectToReferrer: true
+                authenticate(data, () => {
+                    setValues({
+                        ...values,
+                        redirectToReferrer: true
+                    });
                 });
             }
         });
