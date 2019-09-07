@@ -1,130 +1,79 @@
-import React, { Component } from 'react';
+import React, { Fragment, useState, useEffect} from 'react';
 import Gallery from "../Containers/GalleryComponent";
-// import NavBar from "../Containers/NavBarComponent";
-
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-
+// import ReactCard from 'react-bootstrap/ReactCard';
+// import Button from 'react-bootstrap/Button';
+ import Layout from "./Layout";
+import { getProducts } from "./apiPages";
+import Card from "./Card";
+import Search from "./Search";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 // import FloatNav from "react-uwp/FloatNav";
 // import IconButton from "react-uwp/IconButton";
-import "../../src/Styles/Card.css";
-import "./Card"
 
-class Home extends Component {
-    render() {
-        return(
-            <div>
-               
-            {/* <FloatNav
-              style={{ margin: "20px 0" }}
-              isFloatRight={false}
-              focusItemIndex={1}
-              topNode={[
-               
-              ]}
-              expandedItems={[{
-                iconNode: (
-                  <IconButton hoverStyle={{}} activeStyle={{}}>
-                    RatingStarFillReducedPaddingHTMLLegacy
-                  </IconButton>
-                ),
-                title: "Add to Favorites"
-              }, {
-                iconNode: (
-                  <IconButton hoverStyle={{}} activeStyle={{}}>
-                    WebcamLegacy
-                  </IconButton>
-                ),
-                title: "My Account"
-              }, {
-                iconNode: (
-                  <IconButton hoverStyle={{}} activeStyle={{}}>
-                    HomeSolid
-                  </IconButton>
-                ),
-                title: "Jump to Home",
-                href: "/"
-              }]}
-              bottomNode={[
-           
-              ]} */}
-            />    
-          
-            <Gallery />
- <Container>
-  <Row>
-            <Card style={{ width: '20rem' }}>
-  <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3PjyZHZO8sQii4he_GZFmUHvvXmOK_pLM6uGUKH2-tH1YdhIy" />
-  <Card.Body>
-    <Card.Title style={{ color: 'Black' }}>Advertised Products</Card.Title>
-    <Card.Text style={{ color: 'Black' }}>
-      Some quick example text to build on the Advertised Products and make up the bulk of
-      the card's content.
-    </Card.Text >
-    <Button variant="primary">Add to Carts</Button>
-  </Card.Body>
-</Card>
-<Card style={{ width: '20rem' }}>
-  <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3PjyZHZO8sQii4he_GZFmUHvvXmOK_pLM6uGUKH2-tH1YdhIy" />
-  <Card.Body>
-    <Card.Title style={{ color: 'Black' }}>Advertised Products</Card.Title>
-    <Card.Text style={{ color: 'Black' }}>
-      Some quick example text to build on the Advertised Products and make up the bulk of
-      the card's content.
-    </Card.Text >
-    <Button variant="primary">Add to Carts</Button>
-  </Card.Body>
-</Card>
-<Card style={{ width: '20rem' }}>
-  <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3PjyZHZO8sQii4he_GZFmUHvvXmOK_pLM6uGUKH2-tH1YdhIy" />
-  <Card.Body>
-    <Card.Title style={{ color: 'Black' }}>Advertised Products</Card.Title>
-    <Card.Text style={{ color: 'Black' }}>
-      Some quick example text to build on the Advertised Products and make up the bulk of
-      the card's content.
-    </Card.Text >
-    <Button variant="primary">Add to Carts</Button>
-  </Card.Body>
-</Card>
-<Card style={{ width: '20rem' }}>
-  <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3PjyZHZO8sQii4he_GZFmUHvvXmOK_pLM6uGUKH2-tH1YdhIy" />
-  <Card.Body>
-    <Card.Title style={{ color: 'Black' }}>Advertised Products</Card.Title>
-    <Card.Text style={{ color: 'Black' }}>
-      Some quick example text to build on the Advertised Products and make up the bulk of
-      the card's content.
-    </Card.Text >
-    <Button variant="primary">Add to Carts</Button>
-  </Card.Body>
-</Card><Card style={{ width: '20rem' }}>
-  <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3PjyZHZO8sQii4he_GZFmUHvvXmOK_pLM6uGUKH2-tH1YdhIy" />
-  <Card.Body>
-    <Card.Title style={{ color: 'Black' }}>Advertised Products</Card.Title>
-    <Card.Text style={{ color: 'Black' }}>
-      Some quick example text to build on the Advertised Products and make up the bulk of
-      the card's content.
-    </Card.Text >
-    <Button variant="primary">Add to Carts</Button>
-  </Card.Body>
-</Card><Card style={{ width: '20rem' }}>
-  <Card.Img style={{ width: '8rem' }}variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3PjyZHZO8sQii4he_GZFmUHvvXmOK_pLM6uGUKH2-tH1YdhIy" />
-  <Card.Body>
-    <Card.Title style={{ color: 'Black' }}>Advertised Products</Card.Title>
-    <Card.Text style={{ color: 'Black' }}>
-      Some quick example text to build on the Advertised Products and make up the bulk of
-      the card's content.
-    </Card.Text >
-    <Button variant="primary">Add to Carts</Button>
-  </Card.Body>
-</Card>
-</Row>
-</Container>
-</div>
+
+const Home = () => {
+  const [productsBySell, setProductsBySell] = useState([]);
+  const [productsByArrival, setProductsByArrival] = useState([]);
+  const [error, setError] = useState(false);
+
+  const loadProductsBySell = () => {
+      getProducts("sold").then(data => {
+          if (data.error) {
+              setError(data.error);
+          } else {
+              setProductsBySell(data);
+          }
+      });
+  };
+
+  const loadProductsByArrival = () => {
+      getProducts("createdAt").then(data => {
+          if (data.error) {
+              setError(data.error);
+          } else {
+              setProductsByArrival(data);
+          }
+      });
+  };
+
+  useEffect(() => {
+      loadProductsByArrival();
+      loadProductsBySell();
+  }, []);
+ 
+  return(
+      <Fragment>
+   <Search /> 
+   <Gallery />
+   <Container>
+   <Row>
+   <Layout>
+   <h2 className="mb-4">New Arrivals</h2>
+            <div className="row">
+                {productsByArrival.map((product, i) => (
+                    <div key={i} className="col-4 mb-3">
+                        <Card product={product} />
+                    </div>
+                ))}
+            </div>
+
+            <h2 className="mb-4">Best Sellers</h2>
+            <div className="row">
+                {productsBySell.map((product, i) => (
+                    <div key={i} className="col-4 mb-3">
+                        <Card product={product} />
+                    </div>
+                ))}
+            </div>
+            </Layout>
+   </Row>
+   </Container>
+   </Fragment>
+
         );
-    }
-}
+    };
+
 
 export default Home;
