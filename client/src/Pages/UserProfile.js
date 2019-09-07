@@ -12,12 +12,12 @@ const Dashboard = () => {
             <div className="card">
                 <h4 className="card-header">User Links</h4>
                 <ul className="list-group">
-                    <li className="list-group-item">
+                    <li className="list-group" style={{ color: 'Black' }}>
                         <Link className="nav-link" to="/cart">
                             My Cart
                         </Link>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group" style={{ color: 'Black' }}>
                         <Link className="nav-link" to="/profile/update">
                             Update Profile
                         </Link>

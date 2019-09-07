@@ -89,7 +89,7 @@ const NavBar = ({ history }) => (
                 </li>
             )}
         </ul>
-        <MenuBar />
+        {/* <MenuBar /> */}
     </div>
 );
 
