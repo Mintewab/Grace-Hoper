@@ -6,6 +6,7 @@ class Gallery extends Component {
    
     render( ){
         return(
+          <div>
             <Carousel>
             <Carousel.Item>
               <img
@@ -18,7 +19,7 @@ class Gallery extends Component {
                 
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            {/* <Carousel.Item>
               <img
                 className="d-block w-5"
                 src="https://thesavvycouple.com/wp-content/uploads/2017/05/Save-Money-1.jpg"
@@ -29,12 +30,12 @@ class Gallery extends Component {
                 <h3>Save Money</h3>
                 
               </Carousel.Caption>
-            </Carousel.Item>
+            </Carousel.Item> */}
             <Carousel.Item>
               <img
                 className="d-block w-5"
                 src="https://boston.citymomsblog.com/wp-content/uploads/sites/55/2016/01/donation-pick-up.jpg"
-                alt="Third slide"
+                alt="Second slide"
               />          
               <Carousel.Caption>
                 <h3>Donate</h3>                
@@ -42,6 +43,7 @@ class Gallery extends Component {
             </Carousel.Item>
             
           </Carousel>
+          </div>
      )
     }
 }

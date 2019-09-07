@@ -53,7 +53,7 @@ class Home extends Component {
               ]} */}
             />    
           
-            <Gallery />
+            {/* <Gallery /> */}
  <Container>
   <Row>
             <Card style={{ width: '20rem' }}>
