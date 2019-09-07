@@ -17,7 +17,7 @@ const Checkout = ({ products }) => {
             <button className="btn btn-success">Checkout</button>
         ) : (
             <Link to="/login">
-                <button className="btn btn-primary">Sign in to checkout</button>
+                <button className="btn btn-primary">Login in to checkout</button>
             </Link>
         );
     };
