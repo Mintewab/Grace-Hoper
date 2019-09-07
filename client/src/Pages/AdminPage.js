@@ -9,15 +9,15 @@ const AdminDashboard = () => {
 
     const adminLinks = () => {
         return (
-            <div className="card">
-                <h4 className="card-header">Admin Links</h4>
+            <div className="card" style={{ color: 'white' }}>
+                <h4 className="card-header" style={{ color: 'black' }}>Admin</h4>
                 <ul className="list-group">
-                    <li className="list-group-item">
+                    <li className="list-group">
                         <Link className="nav-link" to="/create/category">
                             Create Category
                         </Link>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group">
                         <Link className="nav-link" to="/create/product">
                             Create Product
                         </Link>

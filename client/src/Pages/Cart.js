@@ -14,8 +14,8 @@ const Cart = () => {
 
     const showItems = items => {
         return (
-            <div>
-                <h2>Your cart has {`${items.length}`} items</h2>
+            <div style={{ color: 'white' }}>
+                <h3 >Your cart has {`${items.length}`} items</h3>
                 <hr />
                 {items.map((product, i) => (
                     <Card
@@ -47,7 +47,7 @@ const Cart = () => {
                     {items.length > 0 ? showItems(items) : noItemsMessage()}
                 </div>
 
-                <div className="col-6">
+                <div className="col-6" style={{ color: 'white' }}>
                     <h2 className="mb-4">Your cart summary</h2>
                     <hr />
                     <Checkout products={items} />
