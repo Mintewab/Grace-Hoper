@@ -1,52 +1,64 @@
-import React, { Component } from "react";
-import API from "../Utils/API"
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-//import Card from "../Components/Card/Card"
-import "../../src/Components/Card/Card.css";
+import React, { useState, useEffect } from "react";
+import Layout from "./Layout";
+import { read, listRelated } from "./apiPages";
+import Card from "./Card";
 
-class Products extends Component {
+const Product = props => {
+    const [product, setProduct] = useState({});
+    const [relatedProduct, setRelatedProduct] = useState([]);
+    const [error, setError] = useState(false);
 
-    state = {
-        products: []
+    const loadSingleProduct = productId => {
+        read(productId).then(data => {
+            if (data.error) {
+                setError(data.error);
+            } else {
+                setProduct(data);
+                // fetch related products
+                listRelated(data._id).then(data => {
+                    if (data.error) {
+                        setError(data.error);
+                    } else {
+                        setRelatedProduct(data);
+                    }
+                });
+            }
+        });
     };
 
-    componentDidMount(){
-        this.loadProducts();
-    }
+    useEffect(() => {
+        const productId = props.match.params.productId;
+        loadSingleProduct(productId);
+    }, [props]);
 
-    loadProducts = () => {
-        API.getProducts()
-         .then(res=> this.setState({products:res.data}))
-        .catch(err => console.log(err));
-    };
+    return (
+        <Layout
+            title={product && product.name}
+            description={
+                product &&
+                product.description &&
+                product.description.substring(0, 100)
+            }
+            className="container-fluid"
+        >
+            <div className="row">
+                <div className="col-8">
+                    {product && product.description && (
+                        <Card product={product} showViewProductButton={false} />
+                    )}
+                </div>
 
-    render(){
-        return (
-         <div>
-            {this.state.products.map(product => (
-                 <Card  key={product._id} style={{ width: '40rem' }}>
-                 <Card.Img style={{ width: '10rem', height: "10rem"}}variant="top"src={product.image} />
-                 <Card.Body>
-                   <Card.Title style={{ color: 'Black' }}>{product.productName}</Card.Title>
-                   <Card.Text style={{ color: 'Black' }}>
-                   {product.catagory}
-                   </Card.Text >
-                   <Card.Text style={{ color: 'Black' }}>
-                   {product.condition}                   
-                   </Card.Text >
-                   <Card.Text style={{ color: 'Black' }}>
-                    Some quick example text to build on the Books and make up the bulk of
-                        the card's content.
-                    </Card.Text >
-                   <Button variant="primary">Add to Carts</Button>
-                 </Card.Body>
-               </Card>
-            ))};
-            
-        </div>
-        ) 
-    }
-}
+                <div className="col-4">
+                    <h4>Related products</h4>
+                    {relatedProduct.map((p, i) => (
+                        <div className="mb-3">
+                            <Card key={i} product={p} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </Layout>
+    );
+};
 
-export default Products;
+export default Product;
