@@ -1,104 +1,60 @@
-import * as React from "react";
-import * as PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Layout from "./Layout";
+import { getCart } from "./cartHelpers";
+import Card from "./Card";
+import Checkout from "./Checkout";
 
-import getTheme from "react-uwp/styles/getTheme";
-import Icon from "react-uwp/Icon";
-import DropDownMenu from "react-uwp/DropDownMenu";
-import ColorPicker from "react-uwp/ColorPicker";
-import CheckBox from "react-uwp/CheckBox";
-import TextBox from "react-uwp/TextBox";
+const Cart = () => {
+    const [items, setItems] = useState([]);
 
+    useEffect(() => {
+        setItems(getCart());
+    }, [items]);
 
-class Cart extends React.Component<any> {
+    const showItems = items => {
+        return (
+            <div>
+                <h2>Your cart has {`${items.length}`} items</h2>
+                <hr />
+                {items.map((product, i) => (
+                    <Card
+                        key={i}
+                        product={product}
+                        showAddToCartButton={false}
+                        cartUpdate={true}
+                        showRemoveProductButton={true}
+                    />
+                ))}
+            </div>
+        );
+    };
 
-    static contextTypes = { theme: PropTypes.object };
-    context: { theme: ReactUWP.ThemeType };
-  
-    fileInput: HTMLInputElement;
-  
-    render() {const { theme } = this.context;
-    const styles = getStyles(this);
+    const noItemsMessage = () => (
+        <h2>
+            Your cart is empty. <br /> <Link to="/shop">Continue shopping</Link>
+        </h2>
+    );
 
     return (
-      <div style={styles.root}>
-        <div style={styles.content}>
-          <div style={{ marginTop: 24 }}>
-            <p style={{ fontSize: 18, lineHeight: 1.6 }}>
-              Add Item of your choice!
-            </p>
-            {/* <DropDownMenu
-              values={[
-                "Dark",
-                "Light"
-              ]}
-              background={theme.useFluentDesign ? theme.acrylicTexture80.background : theme.chromeLow}
-              defaultValue={theme.isDarkTheme ? "Dark" : "Light"}
-              onChangeValue={value => {
-                theme.saveTheme(getTheme({
-                  themeName: value.toLowerCase() as any,
-                  accent: theme.accent,
-                  useFluentDesign: theme.useFluentDesign,
-                  desktopBackgroundImage: theme.desktopBackgroundImage
-                }));
-              }}
-            /> */}
-            <CheckBox
-              style={{ marginLeft: 8 }}
-              defaultChecked={theme.useFluentDesign}
-              label="Shipping"
-              onCheck={useFluentDesign => {
-                theme.saveTheme(getTheme({
-                  themeName: theme.themeName,
-                  accent: theme.accent,
-                  useFluentDesign,
-                  desktopBackgroundImage: theme.desktopBackgroundImage
-                }));
-              }}
-            />
-             <CheckBox
-              style={{ marginLeft: 8 }}
-              defaultChecked={theme.useFluentDesign}
-              label="Pick Up"
-              onCheck={useFluentDesign => {
-                theme.saveTheme(getTheme({
-                  themeName: theme.themeName,
-                  accent: theme.accent,
-                  useFluentDesign,
-                  desktopBackgroundImage: theme.desktopBackgroundImage
-                }));
-              }}
-            />
-            
-          </div>
-        </div>
-       
-      </div>
+        <Layout
+            title="Shopping Cart"
+            description="Manage your cart items. Add remove checkout or continue shopping."
+            className="container-fluid"
+        >
+            <div className="row">
+                <div className="col-6">
+                    {items.length > 0 ? showItems(items) : noItemsMessage()}
+                </div>
+
+                <div className="col-6">
+                    <h2 className="mb-4">Your cart summary</h2>
+                    <hr />
+                    <Checkout products={items} />
+                </div>
+            </div>
+        </Layout>
     );
-  }
-}
-
-function getStyles(customTheme: CustomTheme): {
-  root?: React.CSSProperties;
-  content?: React.CSSProperties;
-} {
-  const {
-    context: { theme }
-  } = customTheme;
-  const { prefixStyle } = theme;
-
-        return{
-             content:prefixStyle({
-                padding: 20,
-                margin: "0 auto",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                flexWrap: "wrap"
-              })
-        };
-          }
-          
+};
 
 export default Cart;
