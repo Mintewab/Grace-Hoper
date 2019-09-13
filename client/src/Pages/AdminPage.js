@@ -10,7 +10,7 @@ const AdminDashboard = () => {
     const adminLinks = () => {
         return (
             <div className="card" style={{ color: 'white' }}>
-                <h4 className="card-header" style={{ color: 'black' }}>Admin</h4>
+                <h4 className="card-header" style={{ color: 'black' }}>User</h4>
                 <ul className="list-group">
                     <li className="list-group">
                         <Link className="nav-link" to="/create/category">
